@@ -1,0 +1,37 @@
+.start-page > div {
+  color: rgb(255, 211, 101);
+  margin: 130px auto;
+  padding: 20px;
+  max-width: 55vw;
+  height: 300px;
+  display: grid;
+  grid-template-rows: 70% 1fr;
+  background-color: rgb(2, 48, 71);
+  gap: 20px;
+  border-radius: 10px;
+}
+
+.start-page h1 {
+  font-size: 2rem;
+}
+
+.start-page > div > div:last-child {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.start-page_btn {
+  display: grid;
+  align-items: center;
+  border: 1px solid rgb(142, 202, 230);
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.start-page_btn:hover {
+  background-color: rgb(3, 66, 98);
+  transition: all 0.2s;
+}
