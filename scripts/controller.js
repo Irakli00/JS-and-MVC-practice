@@ -1,3 +1,14 @@
+//import { quizz } from "./model.js";
+//console.log(quizz);
+import { loadQuizz } from "./model.js";
+const gu = async function () {
+  try {
+    const huh = await loadQuizz();
+    console.log(huh);
+  } catch {}
+};
+gu();
+
 /* const doUKnow = async function () {
   try {
     const askMe = await fetch(
