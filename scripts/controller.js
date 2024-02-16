@@ -1,6 +1,5 @@
 //import { quizz } from "./model.js";
 //console.log(quizz);
-import { as } from "./view.js";
 import { loadQuizz } from "./model.js";
 export const controlQuizzData = async function () {
   try {
