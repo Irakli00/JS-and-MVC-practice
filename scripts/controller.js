@@ -1,13 +1,14 @@
 //import { quizz } from "./model.js";
 //console.log(quizz);
+import { as } from "./view.js";
 import { loadQuizz } from "./model.js";
-const gu = async function () {
+export const controlQuizzData = async function () {
   try {
     const huh = await loadQuizz();
     console.log(huh);
   } catch {}
 };
-gu();
+controlQuizzData();
 
 /* const doUKnow = async function () {
   try {
