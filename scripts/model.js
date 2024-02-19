@@ -1,12 +1,15 @@
+export const state = {
+  data: {},
+};
+
 export const loadQuizz = async function () {
   try {
-    const loadData = await fetch(
+    const data = await fetch(
       `https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple`
     );
-    const data = await loadData.json();
-    const questions = data.results;
-    const quizz = Object.assign({}, questions);
+    const res = await data.json();
+    const questions = res.results;
 
-    return quizz;
+    state.data = questions;
   } catch {}
 };

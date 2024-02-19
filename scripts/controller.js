@@ -1,10 +1,9 @@
-//import { quizz } from "./model.js";
-//console.log(quizz);
-import { loadQuizz } from "./model.js";
-export const controlQuizzData = async function () {
+import * as model from "./model.js";
+
+const controlQuizzData = async function () {
   try {
-    const huh = await loadQuizz();
-    console.log(huh);
+    await model.loadQuizz();
+    console.log(model.state.data);
   } catch {}
 };
 controlQuizzData();
