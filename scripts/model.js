@@ -1,5 +1,6 @@
 export const state = {
   data: {},
+  currentQuestion: 0,
 };
 
 export const loadQuizz = async function () {

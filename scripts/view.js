@@ -6,6 +6,7 @@ class QuestionsView {
     /*     this.data = data;
     console.log(this._data);
     console.log(data); */
+
     const allAnswers = [data.correct_answer, ...data.incorrect_answers];
     const randomisedAnswers = [];
     console.log(allAnswers);
@@ -31,20 +32,9 @@ class QuestionsView {
       </article>
       `;
     this._parentElement.insertAdjacentHTML("afterbegin", markup);
-    randomise();
-    //console.log(markup);
+
     //console.log(this._data);
   }
 }
 
 export default new QuestionsView();
-
-/*     const allAnswers = [data.correct_answer, ...data.incorrect_answers];
-    const randomisedAnswers = [];
-    console.log(allAnswers);
-
-    allAnswers.slice().forEach(() => {
-      let index = Math.floor(Math.random() * allAnswers.length);
-      randomisedAnswers.push(allAnswers[index]);
-      allAnswers.splice(allAnswers.indexOf(allAnswers[index]), 1);
-    }); */
