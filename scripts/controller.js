@@ -9,4 +9,8 @@ const controlQuizzData = async function () {
     questionsView.render(model.state.data[model.state.currentQuestion]);
   } catch {}
 };
-controlQuizzData();
+//controlQuizzData();
+const init = function () {
+  questionsView.addHandlerRender(controlQuizzData);
+};
+init();

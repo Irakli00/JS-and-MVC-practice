@@ -39,6 +39,11 @@ class QuestionsView {
 
     //console.log(this._data);
   }
+  addHandlerRender(handler) {
+    document
+      .querySelector(".start-page_btn")
+      .addEventListener("click", handler);
+  }
 }
 
 export default new QuestionsView();
