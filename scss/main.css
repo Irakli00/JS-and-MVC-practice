@@ -47,4 +47,60 @@ body {
 .start-page_btn:hover {
   background-color: rgb(3, 66, 98);
   transition: all 0.2s;
+}
+
+.question--area {
+  background-color: gray;
+}
+
+.question--area_active {
+  color: rgb(255, 211, 101);
+  background-color: rgb(2, 48, 71);
+  text-align: center;
+  padding: 20px;
+  max-width: 55vw;
+  margin: 130px auto;
+}
+.question--area_active_question {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+.question--area_active_question h2 {
+  border-bottom: 1px solid rgb(142, 202, 230);
+  font-size: 1.7rem;
+  padding-bottom: 20px;
+}
+.question--area_active_question p {
+  border: 1px solid rgb(142, 202, 230);
+  cursor: pointer;
+  padding: 20px;
+}
+.question--area_active_question p:hover {
+  background-color: rgb(3, 66, 98);
+  transition: all 0.2s;
+}
+.question--area_active_question > div:first-of-type {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+.question--area_active_question > div:last-of-type {
+  border-top: 1px solid rgb(142, 202, 230);
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+.question--area_active_question > div:last-of-type button {
+  cursor: pointer;
+  color: rgb(255, 211, 101);
+  background-color: rgb(2, 48, 71);
+  border: 1px solid rgb(142, 202, 230);
+  padding: 10px 40px;
+}
+.question--area_active_question > div:last-of-type button:hover {
+  background-color: rgb(3, 66, 98);
+  transition: all 0.2s;
 }/*# sourceMappingURL=main.css.map */

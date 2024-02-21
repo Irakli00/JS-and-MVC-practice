@@ -21,14 +21,18 @@ class QuestionsView {
 
     randomise(allAnswers);
     const markup = `
-      <article>
+      <article class="question--area_question">
         <h2>${data.question}</h2>
-        <p>${randomisedAnswers[0]}</p>
-        <p>${randomisedAnswers[1]}</p>
-        <p>${randomisedAnswers[2]}</p>
-        <p>${randomisedAnswers[3]}</p>
-        <button>prev</button>
-        <button>next</button>
+        <div>
+          <p>${randomisedAnswers[0]}</p>
+          <p>${randomisedAnswers[1]}</p>
+          <p>${randomisedAnswers[2]}</p>
+          <p>${randomisedAnswers[3]}</p>
+        </div>
+        <div>
+          <button>prev</button>
+          <button>next</button>
+        </div>
       </article>
       `;
     this._parentElement.insertAdjacentHTML("afterbegin", markup);
