@@ -6,7 +6,8 @@ const controlQuizzData = async function () {
     await model.loadQuizz();
     console.log(model.state.data);
 
-    questionsView.render(model.state.data[model.state.currentQuestion]);
+    //questionsView.render(model.state.data[0]);
+    questionsView.renderAllQuestions(model.state.data);
   } catch {}
 };
 //controlQuizzData();
