@@ -4,7 +4,7 @@ class QuestionsView {
 
   renderQuestion(data, questionNum) {
     this._data = data[questionNum];
-    console.log(this._data);
+    //console.log(this._data);
 
     const generatedMarkup = function () {
       const allAnswers = [
@@ -52,16 +52,15 @@ class QuestionsView {
       .querySelector(".start-page_btn")
       .addEventListener("click", handler);
   }
-  /* 
+
   addHandlerNext(handler) {
     this._parentElement.addEventListener("click", function (e) {
       const target = e.target;
       if (target.classList.contains("question--next-btn")) {
-        console.log("io");
         handler();
       }
     });
-  } */
+  }
 }
 
 export default new QuestionsView();

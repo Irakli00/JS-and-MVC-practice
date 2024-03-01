@@ -64,7 +64,6 @@ body {
   display: flex;
   gap: 20px;
   flex-direction: column;
-  border-bottom: 2px solid red;
 }
 .question--area_question h2 {
   border-bottom: 1px solid rgb(142, 202, 230);
