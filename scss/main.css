@@ -52,6 +52,9 @@ body {
 .question--area {
   color: rgb(255, 211, 101);
   background-color: rgb(2, 48, 71);
+  /*   display: flex;
+  flex-direction: column;
+  gap: 40px; */
   text-align: center;
   padding: 20px;
   max-width: 55vw;
@@ -61,6 +64,7 @@ body {
   display: flex;
   gap: 20px;
   flex-direction: column;
+  border-bottom: 2px solid red;
 }
 .question--area_question h2 {
   border-bottom: 1px solid rgb(142, 202, 230);

@@ -5,13 +5,28 @@ const controlQuizzData = async function () {
   try {
     await model.loadQuizz();
     console.log(model.state.data);
-
-    //questionsView.render(model.state.data[0]);
-    questionsView.renderAllQuestions(model.state.data);
+    questionsView.renderQuestion(model.state.data, model.state.currentQuestion);
+    model.state.currentQuestion++;
+    console.log(model.state.currentQuestion);
   } catch {}
 };
-//controlQuizzData();
+/* 
+const controlNextQuestion= function(){
+
+} */
+
 const init = function () {
   questionsView.addHandlerRender(controlQuizzData);
+  //temporary
+  questionsView.addHandlerNext();
+  /*   document
+    .querySelector(".question--next-btn")
+    .addEventListener(
+      "click",
+      questionsView.renderQuestion(
+        model.state.data,
+        model.state.currentQuestion
+      )
+    ); */
 };
 init();

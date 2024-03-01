@@ -2,15 +2,17 @@ class QuestionsView {
   _parentElement = document.querySelector(".question--area");
   _data;
 
-  render(data) {
-    this._data = data;
+  renderQuestion(data, questionNum) {
+    this._data = data[questionNum];
     console.log(this._data);
-    console.log(data);
 
     const generatedMarkup = function () {
-      const allAnswers = [data.correct_answer, ...data.incorrect_answers];
+      const allAnswers = [
+        this._data.correct_answer,
+        ...this._data.incorrect_answers,
+      ];
+      //console.log(allAnswers);
       const randomisedAnswers = [];
-      console.log(allAnswers);
 
       const randomise = function (arr) {
         arr.slice().forEach(() => {
@@ -23,7 +25,7 @@ class QuestionsView {
       randomise(allAnswers);
       const markup = `
         <article class="question--area_question">
-        <h2>${data.question}</h2>
+        <h2>${this._data.question}</h2>
         <div>
         <p>${randomisedAnswers[0]}</p>
             <p>${randomisedAnswers[1]}</p>
@@ -32,20 +34,17 @@ class QuestionsView {
           </div>
           <div>
             <button>prev</button>
-            <button>next</button>
+            <button class="question--next-btn" >next</button>
           </div>
         </article>
     `;
       return markup;
-    };
+    }.bind(this);
 
-    this._parentElement.insertAdjacentHTML("afterbegin", generatedMarkup(data));
-  }
-
-  renderAllQuestions(dataArr = this._data) {
-    dataArr.forEach((el) => {
-      this.render(el);
-    });
+    this._parentElement.insertAdjacentHTML(
+      "afterbegin",
+      generatedMarkup(this._data)
+    );
   }
 
   addHandlerRender(handler) {
@@ -53,6 +52,16 @@ class QuestionsView {
       .querySelector(".start-page_btn")
       .addEventListener("click", handler);
   }
+  /* 
+  addHandlerNext(handler) {
+    this._parentElement.addEventListener("click", function (e) {
+      const target = e.target;
+      if (target.classList.contains("question--next-btn")) {
+        console.log("io");
+        handler();
+      }
+    });
+  } */
 }
 
 export default new QuestionsView();
