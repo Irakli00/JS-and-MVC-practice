@@ -4,7 +4,8 @@ class QuestionsView {
 
   renderQuestion(data, questionNum) {
     this._data = data[questionNum];
-    //console.log(this._data);
+    this._parentElement.innerHTML = ``;
+    if (!this._data) return; //this for now, thow errors next
 
     const generatedMarkup = function () {
       const allAnswers = [
@@ -33,7 +34,7 @@ class QuestionsView {
             <p>${randomisedAnswers[3]}</p>
           </div>
           <div>
-            <button>prev</button>
+            <button class="question--previous-btn">prev</button>
             <button class="question--next-btn" >next</button>
           </div>
         </article>
@@ -47,7 +48,7 @@ class QuestionsView {
     );
   }
 
-  addHandlerRender(handler) {
+  addHandlerRenderFirst(handler) {
     document
       .querySelector(".start-page_btn")
       .addEventListener("click", handler);
@@ -57,6 +58,15 @@ class QuestionsView {
     this._parentElement.addEventListener("click", function (e) {
       const target = e.target;
       if (target.classList.contains("question--next-btn")) {
+        handler();
+      }
+    });
+  }
+
+  addHandlerPrev(handler) {
+    this._parentElement.addEventListener("click", function (e) {
+      const target = e.target;
+      if (target.classList.contains("question--previous-btn")) {
         handler();
       }
     });

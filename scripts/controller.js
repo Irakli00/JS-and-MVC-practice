@@ -15,12 +15,21 @@ const controlQuizzData = async function () {
 
 const controlNextQuestion = function () {
   model.state.currentQuestion++;
+  console.log(model.state.currentQuestion);
+
   questionsView.renderQuestion(currentQ, model.state.currentQuestion);
 };
 
+const controlPreviousQuestion = function () {
+  model.state.currentQuestion--;
+  questionsView.renderQuestion(currentQ, model.state.currentQuestion);
+  console.log(model.state.currentQuestion);
+};
+
 const init = function () {
-  questionsView.addHandlerRender(controlQuizzData);
+  questionsView.addHandlerRenderFirst(controlQuizzData);
   //temporary
   questionsView.addHandlerNext(controlNextQuestion);
+  questionsView.addHandlerPrev(controlPreviousQuestion);
 };
 init();
