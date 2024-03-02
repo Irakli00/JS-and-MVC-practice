@@ -26,10 +26,15 @@ const controlPreviousQuestion = function () {
   console.log(model.state.currentQuestion);
 };
 
+const controlAnswers = function () {
+  console.log("-----");
+};
+
 const init = function () {
   questionsView.addHandlerRenderFirst(controlQuizzData);
   //temporary
   questionsView.addHandlerNext(controlNextQuestion);
   questionsView.addHandlerPrev(controlPreviousQuestion);
+  questionsView.addHandlerAnswer(controlAnswers);
 };
 init();

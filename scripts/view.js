@@ -25,19 +25,19 @@ class QuestionsView {
 
       randomise(allAnswers);
       const markup = `
-        <article class="question--area_question">
+      <article class="question--area_question">
         <h2>${this._data.question}</h2>
         <div>
-        <p>${randomisedAnswers[0]}</p>
-            <p>${randomisedAnswers[1]}</p>
-            <p>${randomisedAnswers[2]}</p>
-            <p>${randomisedAnswers[3]}</p>
-          </div>
-          <div>
-            <button class="question--previous-btn">prev</button>
-            <button class="question--next-btn" >next</button>
-          </div>
-        </article>
+          <p data-option="${randomisedAnswers[0]}">${randomisedAnswers[0]}</p>
+          <p data-option="${randomisedAnswers[1]}">${randomisedAnswers[1]}</p>
+          <p data-option="${randomisedAnswers[2]}">${randomisedAnswers[2]}</p>
+          <p data-option="${randomisedAnswers[3]}">${randomisedAnswers[3]}</p>
+        </div>
+        <div>
+          <button class="question--previous-btn">prev</button>
+          <button class="question--next-btn" >next</button>
+        </div>
+      </article>
     `;
       return markup;
     }.bind(this);
@@ -69,6 +69,21 @@ class QuestionsView {
       if (target.classList.contains("question--previous-btn")) {
         handler();
       }
+    });
+  }
+
+  addHandlerAnswer(handler) {
+    const parent = this._parentElement;
+    //console.log(parent);
+    const answers = [];
+
+    parent.addEventListener("click", () => {
+      parent.querySelectorAll("p").forEach((el) => {
+        answers.push(el.dataset.option);
+      });
+      console.log(answers);
+      console.log(this._data.correct_answer);
+      handler();
     });
   }
 }
