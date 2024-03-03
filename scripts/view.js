@@ -1,6 +1,7 @@
 class QuestionsView {
   _parentElement = document.querySelector(".question--area");
   _data;
+  answers = [];
 
   renderQuestion(data, questionNum) {
     this._data = data[questionNum];
@@ -27,7 +28,7 @@ class QuestionsView {
       const markup = `
       <article class="question--area_question">
         <h2>${this._data.question}</h2>
-        <div>
+        <div class="options--area">
           <p data-option="${randomisedAnswers[0]}">${randomisedAnswers[0]}</p>
           <p data-option="${randomisedAnswers[1]}">${randomisedAnswers[1]}</p>
           <p data-option="${randomisedAnswers[2]}">${randomisedAnswers[2]}</p>
@@ -74,15 +75,13 @@ class QuestionsView {
 
   addHandlerAnswer(handler) {
     const parent = this._parentElement;
-    //console.log(parent);
-    const answers = [];
+    //console.log(this._parentElement);
 
     parent.addEventListener("click", () => {
       parent.querySelectorAll("p").forEach((el) => {
-        answers.push(el.dataset.option);
+        this.answers.push(el.dataset.option);
       });
-      console.log(answers);
-      console.log(this._data.correct_answer);
+
       handler();
     });
   }

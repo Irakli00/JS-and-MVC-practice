@@ -27,12 +27,19 @@ const controlPreviousQuestion = function () {
 };
 
 const controlAnswers = function () {
-  console.log("-----");
+  const answer = questionsView.answers;
+  const correctAnswer = questionsView._data.correct_answer;
+
+  const optionsData = Array.from(
+    questionsView._parentElement.querySelectorAll("p")
+  );
+
+  console.log(answer);
+  console.log(correctAnswer);
 };
 
 const init = function () {
   questionsView.addHandlerRenderFirst(controlQuizzData);
-  //temporary
   questionsView.addHandlerNext(controlNextQuestion);
   questionsView.addHandlerPrev(controlPreviousQuestion);
   questionsView.addHandlerAnswer(controlAnswers);
