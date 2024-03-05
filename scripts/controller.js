@@ -15,7 +15,7 @@ const controlQuizzData = async function () {
 
 const controlNextQuestion = function () {
   model.state.currentQuestion++;
-  console.log(model.state.currentQuestion);
+  console.log(`current question: ${model.state.currentQuestion}`);
 
   questionsView.renderQuestion(currentQ, model.state.currentQuestion);
 };
@@ -23,19 +23,17 @@ const controlNextQuestion = function () {
 const controlPreviousQuestion = function () {
   model.state.currentQuestion--;
   questionsView.renderQuestion(currentQ, model.state.currentQuestion);
-  console.log(model.state.currentQuestion);
+  console.log(`current question: ${model.state.currentQuestion}`);
 };
 
 const controlAnswers = function () {
-  const answer = questionsView.answers;
-  const correctAnswer = questionsView._data.correct_answer;
-
-  const optionsData = Array.from(
-    questionsView._parentElement.querySelectorAll("p")
-  );
-
-  console.log(answer);
-  console.log(correctAnswer);
+  console.log(questionsView._data.correct_answer);
+  //console.log(questionsView.answers);
+  if (questionsView.answers.answer === questionsView._data.correct_answer) {
+    model.state.correctQuestions++;
+    console.log(`correct answers: ${model.state.correctQuestions}`);
+    controlNextQuestion();
+  }
 };
 
 const init = function () {

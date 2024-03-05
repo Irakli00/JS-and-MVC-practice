@@ -1,7 +1,7 @@
 class QuestionsView {
   _parentElement = document.querySelector(".question--area");
   _data;
-  answers = [];
+  answers = {};
 
   renderQuestion(data, questionNum) {
     this._data = data[questionNum];
@@ -74,14 +74,8 @@ class QuestionsView {
   }
 
   addHandlerAnswer(handler) {
-    const parent = this._parentElement;
-    //console.log(this._parentElement);
-
-    parent.addEventListener("click", () => {
-      parent.querySelectorAll("p").forEach((el) => {
-        this.answers.push(el.dataset.option);
-      });
-
+    this._parentElement.addEventListener("click", (e) => {
+      this.answers.answer = e.target?.dataset.option;
       handler();
     });
   }
