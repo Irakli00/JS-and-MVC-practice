@@ -1,4 +1,5 @@
 import * as model from "./model.js";
+import * as helper from "./helpers";
 import questionsView from "./view.js";
 
 let currentQ;
@@ -27,8 +28,10 @@ const controlPreviousQuestion = function () {
 };
 
 const controlAnswers = function () {
-  console.log(questionsView._data.correct_answer);
-  //console.log(questionsView.answers);
+  questionsView._data.correct_answer = helper.decode(
+    questionsView._data.correct_answer
+  );
+
   if (questionsView.answers.answer === questionsView._data.correct_answer) {
     model.state.correctQuestions++;
     console.log(`correct answers: ${model.state.correctQuestions}`);

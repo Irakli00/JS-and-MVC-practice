@@ -1,3 +1,5 @@
+import * as helper from "./helpers";
+
 class QuestionsView {
   _parentElement = document.querySelector(".question--area");
   _data;
@@ -13,18 +15,9 @@ class QuestionsView {
         this._data.correct_answer,
         ...this._data.incorrect_answers,
       ];
-      //console.log(allAnswers);
-      const randomisedAnswers = [];
 
-      const randomise = function (arr) {
-        arr.slice().forEach(() => {
-          let index = Math.floor(Math.random() * arr.length);
-          randomisedAnswers.push(arr[index]);
-          arr.splice(arr.indexOf(arr[index]), 1);
-        });
-      };
+      const randomisedAnswers = helper.randomise(allAnswers);
 
-      randomise(allAnswers);
       const markup = `
       <article class="question--area_question">
         <h2>${this._data.question}</h2>
@@ -75,7 +68,9 @@ class QuestionsView {
 
   addHandlerAnswer(handler) {
     this._parentElement.addEventListener("click", (e) => {
-      this.answers.answer = e.target?.dataset.option;
+      this.answers.answer = helper.decode(e.target?.dataset.option);
+
+      console.log(`answer: ${this.answers.answer}`);
       handler();
     });
   }
