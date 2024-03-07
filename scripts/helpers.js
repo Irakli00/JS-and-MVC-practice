@@ -10,7 +10,7 @@ export const decode = function (text = "") {
     /&amp;|&lt;|&gt;|&quot;|&#39;/g,
     (match) => entities[match]
   );
-};
+}; //maybe the momment he get the correct answer (?)
 
 export const randomise = function (arr) {
   const randomisedAnswers = [];
