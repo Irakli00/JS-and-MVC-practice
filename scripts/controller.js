@@ -8,6 +8,7 @@ const controlQuizzData = async function () {
   try {
     await model.loadQuizz();
     console.log(model.state.data);
+    console.log("ye");
     questionsView.renderQuestion(model.state.data, 0);
     currentQ = [...model.state.data];
     return model.state.data;
