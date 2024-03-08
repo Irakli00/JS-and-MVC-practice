@@ -7,7 +7,7 @@ export const state = {
 export const loadQuizz = async function () {
   try {
     const data = await fetch(
-      `https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple`
+      `https://opentdb.com/api.php?amount=20&category=9&difficulty=easy&type=multiple`
     );
     const res = await data.json();
     const questions = res.results;
