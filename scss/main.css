@@ -102,4 +102,20 @@ body {
 .question--area_question > div:last-of-type button:hover {
   background-color: rgb(3, 66, 98);
   transition: all 0.2s;
+}
+
+.settings-hidden {
+  display: none;
+}
+
+.settings-display {
+  display: inherit;
+  background-color: rgb(216, 215, 215);
+  max-width: 35vw;
+  padding: 20px;
+  border-radius: 10px;
+}
+.settings-display button {
+  padding: 3px;
+  cursor: pointer;
 }/*# sourceMappingURL=main.css.map */

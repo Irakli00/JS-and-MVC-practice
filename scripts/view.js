@@ -8,6 +8,7 @@ class QuestionsView {
   renderQuestion(data, questionNum) {
     this._data = data[questionNum];
     this._parentElement.innerHTML = ``;
+
     if (!this._data) return; //this for now, thow errors next
 
     const generatedMarkup = function () {
@@ -43,9 +44,7 @@ class QuestionsView {
   }
 
   addHandlerRenderFirst(handler) {
-    document
-      .querySelector(".start-page_btn")
-      .addEventListener("click", handler);
+    document.querySelector(".startBtn").addEventListener("click", handler);
   }
 
   addHandlerNext(handler) {
@@ -70,7 +69,7 @@ class QuestionsView {
     this._parentElement.addEventListener("click", (e) => {
       this.answers.answer = helper.decode(e.target?.dataset.option);
 
-      console.log(`answer: ${this.answers.answer}`);
+      console.log(`your answer: ${this.answers.answer}`);
       handler();
     });
   }
