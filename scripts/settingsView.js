@@ -74,6 +74,20 @@ class SettingsView {
       }.bind(this)
     );
   }
+
+  addHandlerSubmit(handler) {
+    this._parentElement.addEventListener(
+      "click",
+      function (e) {
+        if (e.target.tagName === "BUTTON") {
+          console.log(this._parentElement);
+          console.log(this._parentElement.querySelector("form"));
+          e.preventDefault();
+          handler();
+        }
+      }.bind(this)
+    );
+  }
 }
 
 export default new SettingsView();

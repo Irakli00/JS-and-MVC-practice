@@ -42,6 +42,10 @@ const displaySettings = function () {
   settingsView.renderSettings();
 };
 
+const addHandlerSubmit = function () {
+  console.log("kok");
+};
+
 const init = function () {
   questionsView.addHandlerRenderFirst(controlQuizzData);
   questionsView.addHandlerNext(controlNextQuestion);
@@ -49,5 +53,6 @@ const init = function () {
   questionsView.addHandlerAnswer(controlAnswers);
   //
   settingsView.addHandlerSettings(displaySettings);
+  settingsView.addHandlerSubmit(addHandlerSubmit);
 };
 init();
