@@ -3,7 +3,7 @@ import * as helper from "./helpers";
 class QuestionsView {
   _parentElement = document.querySelector(".question--area");
   _data;
-  answers = {};
+  answer = {};
 
   renderQuestion(data, questionNum) {
     this._data = data[questionNum];
@@ -12,12 +12,10 @@ class QuestionsView {
     if (!this._data) return; //this for now, thow errors next
 
     const generatedMarkup = function () {
-      const allAnswers = [
+      const randomisedAnswers = helper.randomise([
         this._data.correct_answer,
         ...this._data.incorrect_answers,
-      ];
-
-      const randomisedAnswers = helper.randomise(allAnswers);
+      ]);
 
       const markup = `
       <article class="question--area_question">
@@ -67,9 +65,9 @@ class QuestionsView {
 
   addHandlerAnswer(handler) {
     this._parentElement.addEventListener("click", (e) => {
-      this.answers.answer = helper.decode(e.target?.dataset.option);
+      this.answer.answer = helper.decode(e.target?.dataset.option);
 
-      console.log(`your answer: ${this.answers.answer}`);
+      console.log(`your answer: ${this.answer.answer}`);
       handler();
     });
   }

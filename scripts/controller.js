@@ -26,12 +26,12 @@ const controlPreviousQuestion = function () {
 };
 
 const controlAnswers = function () {
-  console.log(`correct: ${questionsView._data.correct_answer}`);
+  console.log(`correct: ${helper.decode(questionsView._data.correct_answer)}`);
   questionsView._data.correct_answer = helper.decode(
     questionsView._data.correct_answer
   );
 
-  if (questionsView.answers.answer === questionsView._data.correct_answer) {
+  if (questionsView.answer.answer === questionsView._data.correct_answer) {
     model.state.correctQuestions++;
     console.log(`correct answers: ${model.state.correctQuestions}`);
     controlNextQuestion();
@@ -42,7 +42,7 @@ const displaySettings = function () {
   settingsView.renderSettings();
 };
 
-const addHandlerSubmit = function (data) {
+const controlSubmit = function (data) {
   const selectedSettings = data;
   console.log(selectedSettings);
 };
@@ -54,6 +54,6 @@ const init = function () {
   questionsView.addHandlerAnswer(controlAnswers);
   //
   settingsView.addHandlerSettings(displaySettings);
-  settingsView.addHandlerSubmit(addHandlerSubmit);
+  settingsView.addHandlerSubmit(controlSubmit);
 };
 init();
