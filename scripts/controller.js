@@ -38,9 +38,8 @@ const controlAnswers = function () {
   }
 };
 
-const controlSettings = function () {
-  console.log("gg");
-  document.querySelector(".settings").classList.toggle("settings-display");
+const displaySettings = function () {
+  settingsView.renderSettings();
 };
 
 const init = function () {
@@ -49,6 +48,6 @@ const init = function () {
   questionsView.addHandlerPrev(controlPreviousQuestion);
   questionsView.addHandlerAnswer(controlAnswers);
   //
-  settingsView.addHandlerSettings(controlSettings);
+  settingsView.addHandlerSettings(displaySettings);
 };
 init();

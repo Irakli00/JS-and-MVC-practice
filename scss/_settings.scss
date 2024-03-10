@@ -1,11 +1,13 @@
-.settings-hidden {
-  display: none;
+.settings--area {
+  position: absolute;
+  left: 40%;
+  top: 40%;
+  transform: translate(-50%, -50%);
 }
 
-.settings-display {
-  display: inherit;
+.settings {
   background-color: rgb(216, 215, 215);
-  max-width: 35vw;
+  min-width: 35vw;
   padding: 20px;
   border-radius: 10px;
 
