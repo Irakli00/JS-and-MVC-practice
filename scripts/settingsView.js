@@ -4,9 +4,9 @@ class SettingsView {
   renderSettings() {
     const markup = `
     <div class="settings">
-      <form action="" method="post">
+      <form class="settings--form" action="" method="post">
         <label for="amount">Select the number of questions:</label>
-        <input type="number" />
+        <input id="number" type="number" />
         <br /><br />
 
         <label for="difficulty">Select the difficulty:</label>
@@ -18,7 +18,7 @@ class SettingsView {
         </select>
         <br /><br />
 
-        <label for="category">Select the categoty:</label>
+        <label for="category">Select the category:</label>
         <select id="category" name="category">
           <option value="any">Any Category</option>
           <option value="9">General Knowledge</option>
@@ -49,7 +49,7 @@ class SettingsView {
         <br /><br />
 
         <label for="type">Select the type:</label>
-        <select name="trivia_type" class="form-control">
+        <select name="trivia_type" class="question_type">
           &gt;
           <option value="any">Any Type</option>
           <option value="multiple">Multiple Choice</option>
@@ -76,17 +76,16 @@ class SettingsView {
   }
 
   addHandlerSubmit(handler) {
-    this._parentElement.addEventListener(
-      "click",
-      function (e) {
-        if (e.target.tagName === "BUTTON") {
-          console.log(this._parentElement);
-          console.log(this._parentElement.querySelector("form"));
-          e.preventDefault();
-          handler();
-        }
-      }.bind(this)
-    );
+    this._parentElement.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const data = {
+        numOfQuestions: +document.getElementById("number").value,
+        difficulty: document.querySelector(".form-control").value,
+        category: document.getElementById("category").value,
+        type: document.querySelector(".question_type").value,
+      };
+      handler(data);
+    });
   }
 }
 

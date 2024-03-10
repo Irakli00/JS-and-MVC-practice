@@ -42,8 +42,9 @@ const displaySettings = function () {
   settingsView.renderSettings();
 };
 
-const addHandlerSubmit = function () {
-  console.log("kok");
+const addHandlerSubmit = function (data) {
+  const selectedSettings = data;
+  console.log(selectedSettings);
 };
 
 const init = function () {
