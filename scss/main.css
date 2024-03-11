@@ -120,4 +120,15 @@ body {
 .settings button {
   padding: 3px;
   cursor: pointer;
+}
+
+.quiz_progression {
+  background-color: white;
+  position: absolute;
+  top: 100px;
+  display: flex;
+}
+.quiz_progression > div {
+  border: 1px solid black;
+  padding: 10px;
 }/*# sourceMappingURL=main.css.map */
