@@ -5,6 +5,10 @@ class QuestionsView {
   _data;
   answer = {};
 
+  _clear() {
+    this._parentElement.innerHTML = "";
+  }
+
   renderQuestion(data, questionNum) {
     this._data = data[questionNum];
     this._parentElement.innerHTML = ``;
@@ -46,6 +50,7 @@ class QuestionsView {
   }
 
   addHandlerNext(handler) {
+    this._clear();
     this._parentElement.addEventListener("click", function (e) {
       const target = e.target;
       if (target.classList.contains("question--next-btn")) {

@@ -1,12 +1,16 @@
 class SettingsView {
   _parentElement = document.querySelector(".settings--area");
 
+  _clear() {
+    this._parentElement.innerHTML = "";
+  }
+
   renderSettings() {
     const markup = `
     <div class="settings">
       <form class="settings--form" action="" method="post">
         <label for="amount">Select the number of questions:</label>
-        <input id="number" type="number" />
+        <input id="number" type="number" required/>
         <br /><br />
 
         <label for="difficulty">Select the difficulty:</label>
@@ -76,16 +80,20 @@ class SettingsView {
   }
 
   addHandlerSubmit(handler) {
-    this._parentElement.addEventListener("submit", function (e) {
-      e.preventDefault();
-      const data = {
-        numOfQuestions: +document.getElementById("number").value,
-        difficulty: document.querySelector(".form-control").value,
-        category: document.getElementById("category").value,
-        type: document.querySelector(".question_type").value,
-      };
-      handler(data);
-    });
+    this._parentElement.addEventListener(
+      "submit",
+      function (e) {
+        e.preventDefault();
+        const data = {
+          numOfQuestions: +document.getElementById("number").value,
+          difficulty: document.querySelector(".form-control").value,
+          category: document.getElementById("category").value,
+          type: document.querySelector(".question_type").value,
+        };
+        this._clear();
+        handler(data);
+      }.bind(this)
+    );
   }
 }
 

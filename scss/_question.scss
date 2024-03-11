@@ -5,11 +5,12 @@
   flex-direction: column;
   gap: 40px; */
   text-align: center;
-  padding: 20px;
+
   max-width: 55vw;
   margin: 130px auto;
 
   &_question {
+    padding: 20px;
     display: flex;
     gap: 20px;
     flex-direction: column;

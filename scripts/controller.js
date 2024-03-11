@@ -6,8 +6,13 @@ import settingsView from "./settingsView.js";
 const controlQuizzData = async function () {
   try {
     await model.loadQuizz();
+
     console.log(model.state.data);
+
+    document.querySelector(".start-page").innerHTML = "";
+
     questionsView.renderQuestion(model.state.data, 0);
+
     currentQ = [...model.state.data];
     return model.state.data;
   } catch {}
@@ -44,7 +49,9 @@ const displaySettings = function () {
 
 const controlSubmit = function (data) {
   const selectedSettings = data;
-  console.log(selectedSettings);
+  // console.log(selectedSettings);
+  model.state.settings = data;
+  console.log(model.state.settings);
 };
 
 const init = function () {
