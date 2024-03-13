@@ -15,10 +15,14 @@ const controlQuizzData = async function () {
 
     questionsView.renderQuestion(model.state.data, 0);
 
+    /////////
     progressionView.renderProgression(
       model.state.data,
       model.state.currentQuestion
     );
+
+    progressionView.focusCurrent(model.state.currentQuestion);
+    ///////
 
     return model.state.data;
   } catch {}
@@ -28,6 +32,10 @@ const controlNextQuestion = function () {
   model.state.currentQuestion++;
   console.log(`current question: ${model.state.currentQuestion}`);
   questionsView.renderQuestion(model.state.data, model.state.currentQuestion);
+
+  ////
+  progressionView.focusCurrent(model.state.currentQuestion);
+  ////
 };
 
 const controlPreviousQuestion = function () {
