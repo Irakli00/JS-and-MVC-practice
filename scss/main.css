@@ -7,7 +7,6 @@
 
 body {
   font-family: "Open Sans", sans-serif;
-  background-color: rgb(142, 202, 230);
   background-color: rgb(118, 152, 255);
 }
 
@@ -107,7 +106,7 @@ body {
 .settings--area {
   position: absolute;
   left: 40%;
-  top: 40%;
+  top: 230px;
   transform: translate(-50%, -50%);
 }
 
@@ -123,12 +122,23 @@ body {
 }
 
 .quiz_progression {
-  background-color: white;
   position: absolute;
-  top: 100px;
+  top: 130px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 120px;
+  font-weight: bold;
+  color: rgb(2, 48, 71);
 }
 .quiz_progression > div {
-  border: 1px solid black;
-  padding: 10px;
+  border: 1px solid rgb(2, 48, 71);
+  padding: 5px 10px;
+}
+
+.current_question {
+  color: rgb(118, 152, 255);
+  background-color: rgb(2, 48, 71);
 }/*# sourceMappingURL=main.css.map */

@@ -39,10 +39,7 @@ class QuestionsView {
       return markup;
     }.bind(this);
 
-    this._parentElement.insertAdjacentHTML(
-      "afterbegin",
-      generatedMarkup(this._data)
-    );
+    this._parentElement.insertAdjacentHTML("afterbegin", generatedMarkup());
   }
 
   addHandlerRenderFirst(handler) {
