@@ -9,7 +9,7 @@ const controlQuizzData = async function () {
     await model.loadQuizz();
 
     console.log(model.state.data);
-    console.log(model.state.currentQuestion);
+    //console.log(model.state.currentQuestion);
 
     document.querySelector(".start-page").innerHTML = "";
 
@@ -21,7 +21,7 @@ const controlQuizzData = async function () {
       model.state.currentQuestion
     );
 
-    progressionView.focusCurrent(model.state.currentQuestion);
+    progressionView.focusNext(model.state.currentQuestion);
     ///////
 
     return model.state.data;
@@ -30,18 +30,24 @@ const controlQuizzData = async function () {
 
 const controlNextQuestion = function () {
   model.state.currentQuestion++;
+
   console.log(`current question: ${model.state.currentQuestion}`);
   questionsView.renderQuestion(model.state.data, model.state.currentQuestion);
 
   ////
-  progressionView.focusCurrent(model.state.currentQuestion);
+  progressionView.focusNext(model.state.currentQuestion);
   ////
 };
 
 const controlPreviousQuestion = function () {
   model.state.currentQuestion--;
   questionsView.renderQuestion(model.state.data, model.state.currentQuestion);
+
   console.log(`current question: ${model.state.currentQuestion}`);
+
+  //
+  progressionView.focusPrev(model.state.currentQuestion);
+  //
 };
 
 const controlAnswers = function () {

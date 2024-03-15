@@ -5,7 +5,7 @@ export const state = {
   currentQuestion: 0,
   correctQuestions: 0,
   settings: {
-    numOfQuestions: 7,
+    numOfQuestions: 15,
     difficulty: "easy",
     category: "9",
     type: "multiple",
