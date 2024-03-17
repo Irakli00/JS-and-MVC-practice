@@ -17,7 +17,7 @@ export const state = {
 export const loadQuizz = async function () {
   try {
     const questionNum =
-      state.settings.numOfQuestions <= 50 ? state.settings.numOfQuestions : 50;
+      state.settings.numOfQuestions < 50 ? state.settings.numOfQuestions : 50;
 
     const difficulty =
       state.settings.difficulty !== "any" ? state.settings.difficulty : "easy";

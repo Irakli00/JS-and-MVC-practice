@@ -51,20 +51,21 @@ body {
 .question--area {
   color: rgb(255, 211, 101);
   background-color: rgb(2, 48, 71);
-  /*   display: flex;
-  flex-direction: column;
-  gap: 40px; */
   text-align: center;
   max-width: 55vw;
-  margin: 130px auto;
+  margin: 20px auto;
+  /*   position: relative; */
 }
 .question--area_question {
   padding: 20px;
   display: flex;
   gap: 20px;
   flex-direction: column;
+  height: 420px;
 }
 .question--area_question h2 {
+  padding: auto;
+  min-height: 120px;
   border-bottom: 1px solid rgb(142, 202, 230);
   font-size: 1.7rem;
   padding-bottom: 20px;
@@ -84,6 +85,8 @@ body {
   gap: 30px;
 }
 .question--area_question > div:last-of-type {
+  /*    position: absolute; */
+  bottom: 0;
   border-top: 1px solid rgb(142, 202, 230);
   padding-top: 20px;
   display: flex;
@@ -122,20 +125,20 @@ body {
 }
 
 .quiz_progression {
-  position: absolute;
-  top: 130px;
+  margin: 30px auto;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
-  max-width: 120px;
   font-weight: bold;
   color: rgb(2, 48, 71);
+  overflow: visible;
 }
 .quiz_progression > div {
   border: 1px solid rgb(2, 48, 71);
   padding: 5px 10px;
+  cursor: pointer;
 }
 
 .current_question {

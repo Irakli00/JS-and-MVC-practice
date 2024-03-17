@@ -1,18 +1,19 @@
 .quiz_progression {
-  position: absolute;
-  top: 130px;
+  margin: 30px auto;
+
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
-  max-width: 120px;
   font-weight: bold;
   color: rgb(2, 48, 71);
+  overflow: visible;
 
   & > div {
     border: 1px solid rgb(2, 48, 71);
     padding: 5px 10px;
+    cursor: pointer;
   }
 }
 
