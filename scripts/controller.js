@@ -31,7 +31,6 @@ const controlQuizzData = async function () {
 const controlNextQuestion = function () {
   model.state.currentQuestion++;
 
-  //console.log(`current question: ${model.state.currentQuestion}`);
   questionsView.renderQuestion(model.state.data, model.state.currentQuestion);
 
   ////
@@ -51,20 +50,19 @@ const controlPreviousQuestion = function () {
 };
 
 const controlAnswers = function () {
-  ///
-  // Assuming key is the key where you want to store the answer
+  //recieving answers
   let key = `question-${model.state.currentQuestion}`;
   const answerValue = questionsView.answer.answer;
 
-  // Check if answerValue is not an empty string before adding it to fullAnswers
   if (answerValue.trim() !== "") {
     model.state.fullAnswers[key] = answerValue;
-  }
+  } // Check if answerValue is not an empty string before adding it to fullAnswers
 
   console.log(model.state.fullAnswers);
-  ///
 
+  //check if correct
   console.log(`correct: ${helper.decode(questionsView._data.correct_answer)}`);
+
   questionsView._data.correct_answer = helper.decode(
     questionsView._data.correct_answer
   );
@@ -77,6 +75,15 @@ const controlAnswers = function () {
     console.log(`correct answers: ${model.state.correctQuestions}`);
     controlNextQuestion();
   }
+
+  //highlingh chosen one
+  console.log(model.state.fullAnswers[key]);
+  const huh = document.querySelector(".options--area");
+  const arr = Array.from(huh.children);
+  const gs = arr.find((el) => el.innerHTML === model.state.fullAnswers[key]);
+
+  console.log(gs);
+  gs.classList.add("you--chose--it");
 };
 
 const displaySettings = function () {
@@ -84,8 +91,6 @@ const displaySettings = function () {
 };
 
 const controlSubmit = function (data) {
-  // const selectedSettings = data;
-  //  console.log(selectedSettings);
   model.state.settings = data;
   console.log(model.state.settings);
 };
