@@ -41,6 +41,7 @@ const controlNextQuestion = function () {
 
 const controlPreviousQuestion = function () {
   model.state.currentQuestion--;
+
   questionsView.renderQuestion(model.state.data, model.state.currentQuestion);
 
   console.log(`current question: ${model.state.currentQuestion}`);
@@ -58,6 +59,9 @@ const controlAnswers = function () {
 
   if (questionsView.answer.answer === questionsView._data.correct_answer) {
     model.state.correctQuestions++;
+    console.log(`correct answers: ${model.state.correctQuestions}`);
+    controlNextQuestion();
+  } else if (questionsView.answer.answer !== "") {
     console.log(`correct answers: ${model.state.correctQuestions}`);
     controlNextQuestion();
   }
