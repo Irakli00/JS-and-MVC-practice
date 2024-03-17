@@ -31,7 +31,7 @@ const controlQuizzData = async function () {
 const controlNextQuestion = function () {
   model.state.currentQuestion++;
 
-  console.log(`current question: ${model.state.currentQuestion}`);
+  //console.log(`current question: ${model.state.currentQuestion}`);
   questionsView.renderQuestion(model.state.data, model.state.currentQuestion);
 
   ////
@@ -43,7 +43,6 @@ const controlPreviousQuestion = function () {
   model.state.currentQuestion--;
 
   questionsView.renderQuestion(model.state.data, model.state.currentQuestion);
-
   console.log(`current question: ${model.state.currentQuestion}`);
 
   //
@@ -52,6 +51,19 @@ const controlPreviousQuestion = function () {
 };
 
 const controlAnswers = function () {
+  ///
+  // Assuming key is the key where you want to store the answer
+  let key = `question-${model.state.currentQuestion}`;
+  const answerValue = questionsView.answer.answer;
+
+  // Check if answerValue is not an empty string before adding it to fullAnswers
+  if (answerValue.trim() !== "") {
+    model.state.fullAnswers[key] = answerValue;
+  }
+
+  console.log(model.state.fullAnswers);
+  ///
+
   console.log(`correct: ${helper.decode(questionsView._data.correct_answer)}`);
   questionsView._data.correct_answer = helper.decode(
     questionsView._data.correct_answer

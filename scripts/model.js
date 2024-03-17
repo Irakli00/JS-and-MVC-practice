@@ -10,6 +10,8 @@ export const state = {
     category: "9",
     type: "multiple",
   },
+  //fullAnswers: [],
+  fullAnswers: {},
 };
 
 export const loadQuizz = async function () {

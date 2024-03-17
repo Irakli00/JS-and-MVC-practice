@@ -30,7 +30,7 @@ class QuestionsView {
           <p data-option="${randomisedAnswers[2]}">${randomisedAnswers[2]}</p>
           <p data-option="${randomisedAnswers[3]}">${randomisedAnswers[3]}</p>
         </div>
-        <div>
+        <div class ="buttons--area">
           <button class="question--previous-btn">prev</button>
           <button class="question--next-btn" >next</button>
         </div>
@@ -50,7 +50,10 @@ class QuestionsView {
     this._clear();
     this._parentElement.addEventListener("click", function (e) {
       const target = e.target;
-      if (target.classList.contains("question--next-btn")) {
+      if (
+        target.classList.contains("question--next-btn") &&
+        target.innerHTML !== ""
+      ) {
         handler();
       }
     });
@@ -59,7 +62,10 @@ class QuestionsView {
   addHandlerPrev(handler) {
     this._parentElement.addEventListener("click", function (e) {
       const target = e.target;
-      if (target.classList.contains("question--previous-btn")) {
+      if (
+        target.classList.contains("question--previous-btn") &&
+        target.innerHTML !== ""
+      ) {
         handler();
       }
     });
@@ -69,7 +75,7 @@ class QuestionsView {
     this._parentElement.addEventListener("click", (e) => {
       this.answer.answer = helper.decode(e.target?.dataset.option);
 
-      console.log(`your answer: ${this.answer.answer}`);
+      //console.log(`your answer: ${this.answer.answer}`);
       handler();
     });
   }
