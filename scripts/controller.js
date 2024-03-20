@@ -54,7 +54,7 @@ const controlPreviousQuestion = function () {
   //
 };
 
-const controlAnswers = function () {
+const controlAnswers = function (target) {
   if (model.state.data.length === model.state.currentQuestion + 1) return;
 
   //recieving answers
@@ -84,13 +84,26 @@ const controlAnswers = function () {
   }
 
   //highlingh chosen one
-  console.log(model.state.fullAnswers[key]);
-  const huh = document.querySelector(".options--area");
-  const arr = Array.from(huh.children);
-  const gs = arr.find((el) => el.innerHTML === model.state.fullAnswers[key]);
 
-  //console.log(gs);
-  gs.classList.add("you--chose--it"); //good enough
+  console.log(model.state.fullAnswers[key]);
+  /*   const huh = document.querySelector(".options--area");
+  const arr = Array.from(huh.children); */
+  console.log(`target`);
+  console.log(target);
+  const elements = document.querySelectorAll("[data-option]");
+  console.log(elements);
+
+  target.classList.add("you--chose--it");
+
+  //console.log(arr);
+  console.log(model.state.fullAnswers[key]);
+
+  /*   const gs = arr.find(
+    (el) => el.getAttribute("data-option") === model.state.fullAnswers[key]
+  );
+  console.log(gs);
+
+  gs?.classList.add("you--chose--it"); //good enough */
 };
 
 const displaySettings = function () {
