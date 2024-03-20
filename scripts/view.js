@@ -74,8 +74,6 @@ class QuestionsView {
   addHandlerAnswer(handler) {
     this._parentElement.addEventListener("click", (e) => {
       this.answer.answer = helper.decode(e.target?.dataset.option);
-
-      //console.log(`your answer: ${this.answer.answer}`);
       handler();
     });
   }

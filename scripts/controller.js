@@ -4,12 +4,15 @@ import questionsView from "./view.js";
 import settingsView from "./settingsView.js";
 import progressionView from "./progressionView.js";
 
+const finishGame = function () {
+  console.log("vsio");
+};
+
 const controlQuizzData = async function () {
   try {
     await model.loadQuizz();
 
     console.log(model.state.data);
-    //console.log(model.state.currentQuestion);
 
     document.querySelector(".start-page").innerHTML = "";
 
@@ -29,6 +32,7 @@ const controlQuizzData = async function () {
 };
 
 const controlNextQuestion = function () {
+  if (model.state.data.length === model.state.currentQuestion) return;
   model.state.currentQuestion++;
 
   questionsView.renderQuestion(model.state.data, model.state.currentQuestion);
@@ -39,6 +43,7 @@ const controlNextQuestion = function () {
 };
 
 const controlPreviousQuestion = function () {
+  if (model.state.currentQuestion === 0) return; //finishGame()
   model.state.currentQuestion--;
 
   questionsView.renderQuestion(model.state.data, model.state.currentQuestion);
@@ -50,6 +55,8 @@ const controlPreviousQuestion = function () {
 };
 
 const controlAnswers = function () {
+  if (model.state.data.length === model.state.currentQuestion + 1) return;
+
   //recieving answers
   let key = `question-${model.state.currentQuestion}`;
   const answerValue = questionsView.answer.answer;
@@ -82,8 +89,8 @@ const controlAnswers = function () {
   const arr = Array.from(huh.children);
   const gs = arr.find((el) => el.innerHTML === model.state.fullAnswers[key]);
 
-  console.log(gs);
-  gs.classList.add("you--chose--it");
+  //console.log(gs);
+  gs?.classList.add("you--chose--it"); //good enough
 };
 
 const displaySettings = function () {

@@ -24,7 +24,7 @@ class ProgressionView {
     const all = this._parentElement.querySelectorAll(`div`);
     const arr = Array.from(all);
 
-    arr[i].classList.add("current_question");
+    arr[i]?.classList.add("current_question");
     arr[i - 1].classList.remove("current_question");
   }
 

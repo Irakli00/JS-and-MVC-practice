@@ -5,12 +5,12 @@ export const state = {
   currentQuestion: 0,
   correctQuestions: 0,
   settings: {
-    numOfQuestions: 15,
+    numOfQuestions: 5,
     difficulty: "easy",
     category: "9",
     type: "multiple",
   },
-  //fullAnswers: [],
+
   fullAnswers: {},
 };
 
