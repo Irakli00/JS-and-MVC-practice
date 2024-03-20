@@ -90,7 +90,7 @@ const controlAnswers = function () {
   const gs = arr.find((el) => el.innerHTML === model.state.fullAnswers[key]);
 
   //console.log(gs);
-  gs?.classList.add("you--chose--it"); //good enough
+  gs.classList.add("you--chose--it"); //good enough
 };
 
 const displaySettings = function () {
