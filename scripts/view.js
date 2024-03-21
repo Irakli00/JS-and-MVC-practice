@@ -4,6 +4,7 @@ class QuestionsView {
   _parentElement = document.querySelector(".question--area");
   _data;
   answer = {};
+  markupArr = [];
 
   _clear() {
     this._parentElement.innerHTML = "";
@@ -15,7 +16,7 @@ class QuestionsView {
 
     if (!this._data) return; //this for now, thow errors next
 
-    const generatedMarkup = function () {
+    (function () {
       const randomisedAnswers = helper.randomise([
         this._data.correct_answer,
         ...this._data.incorrect_answers,
@@ -36,10 +37,15 @@ class QuestionsView {
         </div>
       </article>
     `;
-      return markup;
-    }.bind(this);
+      this.markupArr.push(markup);
 
-    this._parentElement.insertAdjacentHTML("afterbegin", generatedMarkup());
+      return markup;
+    }).bind(this)();
+
+    this._parentElement.insertAdjacentHTML(
+      "afterbegin",
+      this.markupArr[questionNum]
+    );
   }
 
   addHandlerRenderFirst(handler) {
