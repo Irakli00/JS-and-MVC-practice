@@ -17,6 +17,7 @@ const controlQuizzData = async function () {
     document.querySelector(".start-page").innerHTML = "";
 
     questionsView.renderQuestion(model.state.data, 0);
+    console.log(questionsView.markupArr[model.state.currentQuestion]);
 
     /////////
     progressionView.renderProgression(
@@ -37,6 +38,8 @@ const controlNextQuestion = function () {
 
   questionsView.renderQuestion(model.state.data, model.state.currentQuestion);
 
+  console.log(questionsView.markupArr[model.state.currentQuestion]);
+
   ////
   progressionView.focusNext(model.state.currentQuestion);
   ////
@@ -47,7 +50,8 @@ const controlPreviousQuestion = function () {
   model.state.currentQuestion--;
 
   questionsView.renderQuestion(model.state.data, model.state.currentQuestion);
-  console.log(`current question: ${model.state.currentQuestion}`);
+
+  console.log(questionsView.markupArr[model.state.currentQuestion]);
 
   //
   progressionView.focusPrev(model.state.currentQuestion);

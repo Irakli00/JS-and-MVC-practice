@@ -37,7 +37,9 @@ class QuestionsView {
         </div>
       </article>
     `;
-      this.markupArr.push(markup);
+
+      let key = questionNum;
+      this.markupArr[key] = markup;
 
       return markup;
     }).bind(this)();
