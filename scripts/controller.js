@@ -17,6 +17,7 @@ const controlQuizzData = async function () {
     document.querySelector(".start-page").innerHTML = "";
 
     questionsView.renderQuestion(model.state.data, 0);
+    //console.log(questionsView.markupArr);
     console.log(questionsView.markupArr[model.state.currentQuestion]);
 
     /////////
@@ -30,32 +31,6 @@ const controlQuizzData = async function () {
 
     return model.state.data;
   } catch {}
-};
-
-const controlNextQuestion = function () {
-  if (model.state.data.length === model.state.currentQuestion) return;
-  model.state.currentQuestion++;
-
-  questionsView.renderQuestion(model.state.data, model.state.currentQuestion);
-
-  console.log(questionsView.markupArr[model.state.currentQuestion]);
-
-  ////
-  progressionView.focusNext(model.state.currentQuestion);
-  ////
-};
-
-const controlPreviousQuestion = function () {
-  if (model.state.currentQuestion === 0) return; //finishGame()
-  model.state.currentQuestion--;
-
-  questionsView.renderQuestion(model.state.data, model.state.currentQuestion);
-
-  console.log(questionsView.markupArr[model.state.currentQuestion]);
-
-  //
-  progressionView.focusPrev(model.state.currentQuestion);
-  //
 };
 
 const controlAnswers = function (target) {
@@ -90,24 +65,41 @@ const controlAnswers = function (target) {
   //highlingh chosen one
 
   console.log(model.state.fullAnswers[key]);
-  /*   const huh = document.querySelector(".options--area");
-  const arr = Array.from(huh.children); */
-  console.log(`target`);
+
+  //var target = target;
   console.log(target);
-  const elements = document.querySelectorAll("[data-option]");
-  console.log(elements);
 
   target.classList.add("you--chose--it");
+  console.log(target.attributes);
 
-  //console.log(arr);
-  console.log(model.state.fullAnswers[key]);
+  //now get its innnerhtml and store it?
+  console.log(target.parentNode.innerHTML);
+};
 
-  /*   const gs = arr.find(
-    (el) => el.getAttribute("data-option") === model.state.fullAnswers[key]
-  );
-  console.log(gs);
+const controlPreviousQuestion = function () {
+  if (model.state.currentQuestion === 0) return; //finishGame()
+  model.state.currentQuestion--;
 
-  gs?.classList.add("you--chose--it"); //good enough */
+  questionsView.renderQuestion(model.state.data, model.state.currentQuestion);
+  // document.querySelector(".question--area").innerHTML = "kk";
+  console.log(questionsView.markupArr[model.state.currentQuestion]);
+
+  //
+  progressionView.focusPrev(model.state.currentQuestion);
+  //
+};
+
+const controlNextQuestion = function () {
+  if (model.state.data.length === model.state.currentQuestion) return;
+  model.state.currentQuestion++;
+
+  questionsView.renderQuestion(model.state.data, model.state.currentQuestion);
+
+  //console.log(questionsView.markupArr[model.state.currentQuestion]);
+
+  ////
+  progressionView.focusNext(model.state.currentQuestion);
+  ////
 };
 
 const displaySettings = function () {
