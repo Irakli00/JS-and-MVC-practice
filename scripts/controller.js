@@ -35,7 +35,11 @@ const controlQuizzData = async function () {
 };
 
 const controlAnswers = function (target) {
-  if (model.state.data.length === model.state.currentQuestion + 1) return;
+  if (model.state.data.length === model.state.currentQuestion + 1)
+    resultsView.renderResults(
+      model.state.correctQuestions,
+      model.state.data.length
+    );
 
   //recieving answers
   let key = `question-${model.state.currentQuestion}`;
