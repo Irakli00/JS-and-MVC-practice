@@ -3,6 +3,7 @@ import * as helper from "./helpers";
 import questionsView from "./view.js";
 import settingsView from "./settingsView.js";
 import progressionView from "./progressionView.js";
+import resultsView from "./resultsView.js";
 
 const finishGame = function () {
   console.log("vsio");
@@ -96,7 +97,12 @@ const controlPreviousQuestion = function () {
 };
 
 const controlNextQuestion = function () {
-  if (model.state.data.length === model.state.currentQuestion) return;
+  if (model.state.data.length === model.state.currentQuestion + 1)
+    resultsView.renderResults(
+      model.state.correctQuestions,
+      model.state.data.length
+    );
+
   model.state.currentQuestion++;
 
   questionsView.renderQuestion(model.state.data, model.state.currentQuestion);

@@ -1,0 +1,50 @@
+.results--area {
+  color: rgb(255, 211, 101);
+  margin: 130px auto;
+  max-width: 55vw;
+  background-color: rgb(2, 48, 71);
+  border-radius: 10px;
+  text-align: center;
+
+  & h2 {
+    font-size: 2rem;
+    padding: 20px;
+  }
+
+  & div:last-child {
+    padding: 20px;
+  }
+
+  & div:first-child {
+    width: calc(100% - 40px);
+  }
+
+  & p {
+    font-size: 1.2rem;
+    padding: 40px;
+  }
+
+  & div:not(div:last-child) {
+    border-bottom: 1px solid rgb(142, 202, 230);
+  }
+
+  &-content_wrapper {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.play-again_btn {
+  cursor: pointer;
+  color: rgb(255, 211, 101);
+  background-color: rgb(2, 48, 71);
+  border: 1px solid rgb(142, 202, 230);
+  padding: 10px 40px;
+  &:hover {
+    background-color: rgb(3, 66, 98);
+    transition: all 0.2s;
+  }
+}
