@@ -18,7 +18,7 @@ const controlQuizzData = async function () {
 
     questionsView.renderQuestion(model.state.data, 0);
     //console.log(questionsView.markupArr);
-    console.log(questionsView.markupArr[model.state.currentQuestion]);
+    // console.log(questionsView.markupArr[model.state.currentQuestion]);
 
     /////////
     progressionView.renderProgression(
@@ -40,7 +40,10 @@ const controlAnswers = function (target) {
   let key = `question-${model.state.currentQuestion}`;
   const answerValue = questionsView.answer.answer;
 
+  const prev = model.state.fullAnswers[key]; //remembering previous answer to not repeat
+
   if (answerValue.trim() !== "") {
+    console.log(prev);
     model.state.fullAnswers[key] = answerValue;
   } // Check if answerValue is not an empty string before adding it to fullAnswers
 
@@ -53,7 +56,10 @@ const controlAnswers = function (target) {
     questionsView._data.correct_answer
   );
 
-  if (questionsView.answer.answer === questionsView._data.correct_answer) {
+  if (
+    questionsView.answer.answer === questionsView._data.correct_answer &&
+    questionsView.answer.answer != prev
+  ) {
     model.state.correctQuestions++;
     console.log(`correct answers: ${model.state.correctQuestions}`);
     controlNextQuestion();
@@ -64,16 +70,16 @@ const controlAnswers = function (target) {
 
   //highlingh chosen one
 
-  console.log(model.state.fullAnswers[key]);
+  //console.log(model.state.fullAnswers[key]);
 
   //var target = target;
-  console.log(target);
+  //console.log(target);
 
-  target.classList.add("you--chose--it");
-  console.log(target.attributes);
+  //target.classList.add("you--chose--it");
+  //console.log(target.attributes);
 
   //now get its innnerhtml and store it?
-  console.log(target.parentNode.innerHTML);
+  //console.log(target.parentNode.innerHTML);
 };
 
 const controlPreviousQuestion = function () {
@@ -82,7 +88,7 @@ const controlPreviousQuestion = function () {
 
   questionsView.renderQuestion(model.state.data, model.state.currentQuestion);
   // document.querySelector(".question--area").innerHTML = "kk";
-  console.log(questionsView.markupArr[model.state.currentQuestion]);
+  //console.log(questionsView.markupArr[model.state.currentQuestion]);
 
   //
   progressionView.focusPrev(model.state.currentQuestion);
