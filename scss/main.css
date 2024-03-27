@@ -162,9 +162,6 @@ body {
   font-size: 2rem;
   padding: 20px;
 }
-.results--area div:last-child {
-  padding: 20px;
-}
 .results--area div:first-child {
   width: calc(100% - 40px);
 }
@@ -189,6 +186,7 @@ body {
   background-color: rgb(2, 48, 71);
   border: 1px solid rgb(142, 202, 230);
   padding: 10px 40px;
+  margin-bottom: 20px;
 }
 .play-again_btn:hover {
   background-color: rgb(3, 66, 98);

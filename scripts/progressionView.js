@@ -1,7 +1,12 @@
 class ProgressionView {
   _parentElement = document.querySelector(".quiz_progression");
 
+  _clear() {
+    this._parentElement.innerHTML = "";
+  }
+
   renderProgression(data, curr) {
+    this._clear();
     data.forEach(
       function (_, i) {
         const markup = `<div class="" class="index--${i}" ><p>${

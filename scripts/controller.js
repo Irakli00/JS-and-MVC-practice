@@ -7,6 +7,10 @@ import resultsView from "./resultsView.js";
 
 const finishGame = function () {
   console.log("vsio");
+  resultsView.renderResults(
+    model.state.correctQuestions,
+    model.state.data.length
+  );
 };
 
 const controlQuizzData = async function () {
@@ -30,16 +34,14 @@ const controlQuizzData = async function () {
     progressionView.focusNext(model.state.currentQuestion);
     ///////
 
+    document.querySelector(".results--area").innerHTML = ``; //for now
+
     return model.state.data;
   } catch {}
 };
 
 const controlAnswers = function (target) {
-  if (model.state.data.length === model.state.currentQuestion + 1)
-    resultsView.renderResults(
-      model.state.correctQuestions,
-      model.state.data.length
-    );
+  if (model.state.data.length === model.state.currentQuestion + 1) finishGame();
 
   //recieving answers
   let key = `question-${model.state.currentQuestion}`;
@@ -101,11 +103,7 @@ const controlPreviousQuestion = function () {
 };
 
 const controlNextQuestion = function () {
-  if (model.state.data.length === model.state.currentQuestion + 1)
-    resultsView.renderResults(
-      model.state.correctQuestions,
-      model.state.data.length
-    );
+  if (model.state.data.length === model.state.currentQuestion + 1) finishGame();
 
   model.state.currentQuestion++;
 
@@ -127,6 +125,15 @@ const controlSubmit = function (data) {
   console.log(model.state.settings);
 };
 
+const controlPlayAgain = function () {
+  console.log("kk");
+
+  model.state.currentQuestion = 0;
+  model.state.correctQuestions = 0;
+  // console.log(model.state.currentQuestion, model.state.correctQuestions);
+  controlQuizzData();
+};
+
 const init = function () {
   questionsView.addHandlerRenderFirst(controlQuizzData);
   questionsView.addHandlerNext(controlNextQuestion);
@@ -135,5 +142,7 @@ const init = function () {
   //
   settingsView.addHandlerSettings(displaySettings);
   settingsView.addHandlerSubmit(controlSubmit);
+  //
+  resultsView.addHandlerPlayAgain(controlPlayAgain);
 };
 init();

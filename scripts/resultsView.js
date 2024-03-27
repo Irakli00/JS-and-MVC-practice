@@ -6,6 +6,8 @@ class ResultsView {
   }
 
   renderResults(correct, total) {
+    this._clear();
+
     const markup = `
     <article class="results--area-content_wrapper">
       <div>
@@ -21,6 +23,12 @@ class ResultsView {
     `;
     this._parentElement.innerHTML = "";
     this._parentElement.insertAdjacentHTML("afterbegin", markup);
+  }
+
+  addHandlerPlayAgain(handler) {
+    this._parentElement.addEventListener("click", function (e) {
+      if (e.target.classList.contains("play-again_btn")) handler();
+    });
   }
   /* 
   addHandlerResults(handler) {
